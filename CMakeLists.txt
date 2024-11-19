@@ -28,7 +28,11 @@ set(OUTPUT_DIR ${PROJECT_SOURCE_DIR}/bin)  # You may change the output directory
 
 # DLL Generation
 add_library(${EXTENSION_NAME} SHARED ${SOURCES})
-set_target_properties(${EXTENSION_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR} OUTPUT_NAME ${OUTPUT_NAME})
+set_target_properties(${EXTENSION_NAME} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY ${OUTPUT_DIR}
+        OUTPUT_NAME ${OUTPUT_NAME}
+        PREFIX ""
+)  # The settings above define the DLL name. Do NOT change them. REAPER will only load DLLs with the prefix "reaper_".
 
 # Link Libraries
 target_link_libraries(${EXTENSION_NAME} PRIVATE
